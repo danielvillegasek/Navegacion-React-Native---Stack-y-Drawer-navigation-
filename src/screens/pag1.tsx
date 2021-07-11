@@ -5,6 +5,7 @@ import { TouchableOpacity } from 'react-native'
 import { Button } from 'react-native'
 import { Text, View } from 'react-native'
 import { styles } from '../theme/appTheme'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 interface Props extends DrawerScreenProps<any, any> {
     // id: number
@@ -15,10 +16,15 @@ const pag1 = ({ navigation }: Props) => {
     useEffect(() => {        
         navigation.setOptions({
             headerLeft: () => (
-                <Button 
-                    title="menu"
-                    onPress={() => navigation.toggleDrawer()}
-                />
+               <TouchableOpacity style={{
+                   width:50,
+                   height:50,
+                   padding:15,
+                 
+               }}>
+                  <Icon onPress={() => navigation.toggleDrawer()} name="apps-outline" size={20}  /> 
+               </TouchableOpacity>
+                
             )
         })
     }, [])

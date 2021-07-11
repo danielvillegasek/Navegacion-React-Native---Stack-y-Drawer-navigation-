@@ -1,11 +1,11 @@
 import React from 'react';
 import { createDrawerNavigator, DrawerContentComponentProps, DrawerContentOptions, DrawerContentScrollView, DrawerScreenProps } from '@react-navigation/drawer'
-import { StackNavigator } from './StackNavigator';
+import { BottomTabsNavigator } from './BottomTabsNavigator';
 import SettingsScreen from '../screens/SettingsScreen';
 import { Image, TouchableOpacity, useWindowDimensions, View } from 'react-native';
 import { styles } from '../theme/appTheme';
 import { Text } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons'
 
 
 
@@ -16,16 +16,16 @@ export const MenuLateral = () => {
     const { width } = useWindowDimensions()
 
     return (
-      
-            <Drawer.Navigator drawerType={width >= 720 ? 'permanent' : 'front'}
-                drawerContent={
-                    (props) => <MenuInterno {...props} />
-                }
-            >
-                <Drawer.Screen name="StackNavigator" component={StackNavigator} />
-                <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
-            </Drawer.Navigator>
-        
+
+        <Drawer.Navigator drawerType={width >= 720 ? 'permanent' : 'front'}
+            drawerContent={
+                (props) => <MenuInterno {...props} />
+            }
+        >
+            <Drawer.Screen name="BottomTabsNavigator" component={BottomTabsNavigator} />
+            <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
+        </Drawer.Navigator>
+
     );
 }
 
@@ -38,13 +38,15 @@ const MenuInterno = ({ navigation }: DrawerContentComponentProps<DrawerContentOp
 
             <View style={styles.menuContainer}>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate('StackNavigator')}
-                    style={styles.botonSimple}>
+                    onPress={() => navigation.navigate('BottomTabsNavigator')}
+                    style={{...styles.botonSimple, flexDirection: 'row'}}>
+                    <Icon name="compass-outline" size={23} color="gray" />
                     <Text style={styles.textoBotonSimple}> Navegacion </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                     onPress={() => navigation.navigate('SettingsScreen')}
-                    style={styles.botonSimple}>
+                    style={{...styles.botonSimple, flexDirection: 'row'}}>
+                    <Icon name="cog-outline" size={23} color="gray" />
                     <Text style={styles.textoBotonSimple}> Ajustes </Text>
                 </TouchableOpacity>
             </View>
