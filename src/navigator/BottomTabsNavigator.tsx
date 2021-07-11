@@ -28,7 +28,7 @@ export const BottomTabsNavigator = () => {
             }}
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ color, focused, size }) => {
-                    let iconName = "T"
+                    let iconName = "add-circle-outline"
                     switch (route.name) {
                         case 'tab1Screen':
                             iconName = 'briefcase-outline'

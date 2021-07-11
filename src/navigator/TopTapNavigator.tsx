@@ -36,7 +36,7 @@ export const TopTapNavigator = () => {
             }}
             screenOptions={({ route }) => ({
                 tabBarIcon: ({color}) => {
-                    let iconName = "T"
+                    let iconName = "add-circle-outline"
                     switch (route.name) {
                         case 'tab3Screen':
                             iconName = 'bandage-outline'

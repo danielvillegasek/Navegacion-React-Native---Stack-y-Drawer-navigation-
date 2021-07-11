@@ -1,17 +1,16 @@
 import { DrawerScreenProps } from '@react-navigation/drawer'
-import { StackScreenProps } from '@react-navigation/stack'
 import React, { useContext, useEffect } from 'react'
-import { TouchableOpacity } from 'react-native'
 import { Button } from 'react-native'
 import { Text, View } from 'react-native'
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import Icon from 'react-native-vector-icons/Ionicons'
 import { AuthContext } from '../context/AuthContext'
-import { styles } from '../theme/appTheme'
+
 
 interface Props extends DrawerScreenProps<any, any> { }
 
 const SettingsScreen = ({ navigation }: Props) => {
-    
+
     const insets = useSafeAreaInsets()
     const { authState } = useContext(AuthContext)
 
@@ -31,6 +30,9 @@ const SettingsScreen = ({ navigation }: Props) => {
         <View style={{ marginTop: insets.top }}>
             <Text>SettingsScreen</Text>
             <Text>{JSON.stringify(authState, null, 4)}</Text>
+            {
+                authState.favoriteIcon && (<Icon name={authState.favoriteIcon} size={150} />)
+            }
         </View >
     )
 
