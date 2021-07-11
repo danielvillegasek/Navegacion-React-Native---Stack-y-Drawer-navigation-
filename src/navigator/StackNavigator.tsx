@@ -5,11 +5,15 @@ import pag2 from '../screens/pag2';
 import pag3 from '../screens/pag3';
 import Persona from '../screens/Persona';
 
+interface User {
+    id: number, name: string
+}
+
 export type RootStackParams = {
     pag1: undefined,
     pag2: undefined,
     pag3: undefined,
-    persona: { id: number, name: string },
+    persona: User,
 }
 
 const Stack = createStackNavigator<RootStackParams>();
