@@ -7,11 +7,12 @@ import { styles } from '../theme/appTheme'
 interface Props extends StackScreenProps<any, any> { }
 
 const tab2Screen = ({ navigation }: Props) => {
-    const { signIn, authState: { isLoggedIn } } = useContext(AuthContext)
+    const { signIn, logout, authState: { isLoggedIn } } = useContext(AuthContext)
     return (
         <View style={styles.globalMargin}>
             <Text style={styles.title}> tab2Screen </Text>
             {!isLoggedIn && <Button title="signIn" onPress={signIn} />}
+            {isLoggedIn && <Button title="logout" onPress={logout} />}
 
         </View >
     )
